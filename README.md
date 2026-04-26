@@ -78,7 +78,7 @@ Find the returned Project ID in your terminal.
 
 Update terraform.tfvars with your Project ID.
 
-You should now have your Managing API Secret, Organization ID and Project ID. With them, you're able to use the Capella Terraform Provider to create the cloud based mobile infrastructure required for this application example.
+You should now have your Management API Secret, Organization ID and Project ID. With them, you're able to use the Capella Terraform Provider to create the cloud based mobile infrastructure required for this application example.
 
 Any challenges with using the Management API, please refer to the API Guide [https://docs.couchbase.com/cloud/management-api-guide/management-api-intro.html] and API Reference [https://docs.couchbase.com/cloud/management-api-reference/index.html].
 
