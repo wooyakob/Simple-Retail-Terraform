@@ -78,3 +78,27 @@ module "app_endpoints" {
   bucket_name     = var.bucket.name
   endpoints       = var.endpoints
 }
+
+module "db_credentials" {
+  source = "./capella/db-credentials"
+
+  depends_on = [module.bucket]
+
+  organization_id = var.organization_id
+  project_id      = var.project_id
+  auth_token      = var.auth_token
+  cluster_id      = module.cluster.free_tier_cluster_id
+  db_credential   = var.db_credential
+}
+
+module "allowed_ip" {
+  source = "./capella/allowed-ip"
+
+  depends_on = [module.cluster]
+
+  organization_id = var.organization_id
+  project_id      = var.project_id
+  auth_token      = var.auth_token
+  cluster_id      = module.cluster.free_tier_cluster_id
+  allowed_cidr    = var.allowed_cidr
+}

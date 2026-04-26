@@ -38,3 +38,11 @@ variable "app_service" {
 variable "endpoints" {
   description = "App Endpoints configuration"
 }
+
+variable "db_credential" {
+  description = "Database credential configuration"
+}
+
+variable "allowed_cidr" {
+  description = "CIDR block to allow cluster access for cbimport (e.g. 203.0.113.5/32)"
+}

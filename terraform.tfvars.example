@@ -1,0 +1,57 @@
+auth_token = "{api-secret}"
+organization_id = "{org-id}"
+project_id = "{project-id}"
+
+cloud_provider = {
+  name   = "aws"
+  region = "us-east-2"
+  cidr   = "10.50.0.0/24"
+}
+
+couchbase_server = {
+  version = "8.0"
+}
+
+bucket = {
+  name                       = "supermarket"
+  type                       = "couchbase"
+  storage_backend            = "couchstore"
+  memory_allocation_in_mb    = 100
+  bucket_conflict_resolution = "seqno"
+  durability_level           = "none"
+  replicas                   = 0
+  flush                      = false
+  time_to_live_in_seconds    = 0
+  eviction_policy            = "fullEviction"
+}
+
+scopes      = ["NYC-Store", "AA-Store"]
+collections = ["orders", "inventory", "profile"]
+
+app_service = {
+  name        = "supermarket-appservice"
+  description = "Supermarket App Service."
+  nodes       = 1
+  compute = {
+    cpu = 2
+    ram = 4
+  }
+}
+
+endpoints = {
+  "supermarket-aa" = {
+    scope       = "AA-Store"
+    collections = ["orders", "inventory", "profile"]
+  }
+  "supermarket-nyc" = {
+    scope       = "NYC-Store"
+    collections = ["orders", "inventory", "profile"]
+  }
+}
+
+db_credential = {
+  username = "simple-retail"
+  bucket   = "supermarket"
+}
+
+allowed_cidr = "[IP_ADDRESS]" 
