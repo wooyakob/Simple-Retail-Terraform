@@ -25,7 +25,7 @@ Once you're signed up, create an Organization called "Simple Retail" and a Proje
 ![Create Project](images/create-project.png)
 
 ## Generate Capella Management API Key
-Inside of your Simple Retail Organization, click generate key.
+Inside of your Simple Retail Organization, click generate key. Double check you are generating a key fron your Organization and not your Project. You should see Organization Owner permissions as an option.
 
 ![Generate API Key](images/generate-key.png)
 
@@ -64,7 +64,7 @@ Find the returned Organization ID in your terminal.
 Update terraform.tfvars with this Organization ID.
 
 ### Fetch Project ID
-Run this curl command in your terminal to return your Project's ID:
+Update the Organization ID below and run this curl command in your terminal to return your Project's ID:
 
 ```bash
 curl -sS "https://cloudapi.cloud.couchbase.com/v4/organizations/{org_id}/projects" \
