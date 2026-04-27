@@ -78,7 +78,16 @@ Find the returned Project ID in your terminal.
 
 Update terraform.tfvars with your Project ID.
 
-You should now have your Management API Secret, Organization ID and Project ID. With them, you're able to use the Capella Terraform Provider to create the cloud based mobile infrastructure required for this application example.
+### Get Public IP
+Couchbase Capella requires an allowed IP (allowlist) to permit direct database connections (like for `cbimport`).
+Run this command to get your public IP:
+```bash
+curl -s https://api.ipify.org
+```
+
+Update terraform.tfvars with this IP address in the allowed_cidr variable, adding /32 at the end (e.g., "67.212.150.204/32").
+
+You should now have your Management API Secret, Organization ID, Project ID, and Allowed IP. With these, you're ready to build your infrastructure.
 
 Any challenges with using the Management API, please refer to the API Guide [https://docs.couchbase.com/cloud/management-api-guide/management-api-intro.html] and API Reference [https://docs.couchbase.com/cloud/management-api-reference/index.html].
 
@@ -157,21 +166,7 @@ Modify the cbimport command with your unique password and connection string.
 
 ![Get Connection String and Database Credentials](images/get_conn_pass.png)
 
-You also need an allowed IP to run cbimport because it is not an API call but opens a direct TCP connection to the Couchbase cluster on port 11210 (data) and 18091 (management). The IP allowlist will block all direct connections by default for security.
-
-You can get your public IP by running:
-
-```bash
-curl -s https://api.ipify.org
-```
-
-Then add /32 at the end to make it a valid CIDR block. 
-
-Update your terraform.tfvars with your public IP address in the allowed_cidr variable.
-
-Run `terraform apply` to ensure the allowlist is up to date (this is required if you changed your IP or are adding it for the first time after the initial build).
-
-![Refresh Terraform State After IP Change](images/refresh-state-IP-change.png)
+> If your public IP has changed since you first ran `terraform apply`, you must update the `allowed_cidr` in `terraform.tfvars` and run `terraform apply` again to update the allowlist.
 
 Move to the demo-dataset directory and run this command to make the script executable:
 
