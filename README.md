@@ -203,8 +203,16 @@ Your configuration for the NYC Store should look like this:
 
 ![NYC Store Configuration](images/NYC-Store-User.png)
 
-## Mobile Emulator
-Head to the relevant README at [https://github.com/couchbase-examples/couchbase-lite-retail-demo] for instructions on how to setup the application and run it in your mobile emulator for Xcode or Android Studio.
+## Mobile Example
+Once the infrastructure is built, the data loaded, the app users created, you can head to the relevant README at [https://github.com/couchbase-examples/couchbase-lite-retail-demo] for instructions on how setup and run it in your mobile emulator, Xcode or Android Studio.
+
+You will need to click into one of your created App Endpoints in Capella and hit connect to find the connection string. 
+
+![Capella Endpoint URL](images/capella-endpoint-url.png)
+
+You will then have to update the CBL_BASE_URL with the store removed, as this is updated dynamically based on Login credentials, for Android in gradle.properties, and for iOS in Info.plist.
+
+![Gradle Properties URL](images/endpoint-base-url.png)
 
 ## Clean Up Infrastructure
 Run to destroy all of the infrastructure you've created.
