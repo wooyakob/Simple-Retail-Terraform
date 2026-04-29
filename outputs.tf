@@ -14,5 +14,7 @@ output "allowed_cidr" {
   value       = module.allowed_ip.allowed_cidr
 }
 
-
-
+output "endpoint_url" {
+  description = "The public URLs for the Couchbase Capella App Endpoints"
+  value       = { for k, v in module.app_endpoints.app_endpoints : k => v.public_url }
+}

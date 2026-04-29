@@ -212,7 +212,13 @@ Your configuration for the NYC Store should look like this:
 ## Mobile Example
 Once the infrastructure is built, the data loaded, the app users created, you can head to the relevant README at [https://github.com/couchbase-examples/couchbase-lite-retail-demo] for instructions on how setup and run it in your mobile emulator, Xcode or Android Studio.
 
-You will need to click into one of your created App Endpoints in Capella and hit connect to find the connection string. 
+You can fetch your Endpoint quickly via terraform. Remove the supermarket at the end when updating the BASE_URL as the code will populate this automatically based on Login credentials.
+
+```bash
+terraform output endpoint_url
+```
+
+OR you can click into one of your created App Endpoints in Capella and hit connect to find the connection string. 
 
 ![Capella Endpoint URL](images/capella-endpoint-url.png)
 
